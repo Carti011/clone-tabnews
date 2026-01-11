@@ -1,0 +1,18 @@
+# EditorConfig é incrível: https://editorconfig.org
+
+# Arquivo EditorConfig raiz (nível superior)
+root = true
+
+# Quebras de linha estilo Unix com uma nova linha ao final de cada arquivo
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Define o conjunto de caracteres (charset) padrão
+[*]
+charset = utf-8
+
+# Indentação de 4 espaços
+[*]
+indent_style = space
+indent_size = 2
