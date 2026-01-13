@@ -1,5 +1,5 @@
 function Home() {
-  return <h1>Bem vindo ao Clone do TabNews!</h1>;
+  return <h1>Bem vindo a Vigele Flores 🌹</h1>;
 }
 
 export default Home;
