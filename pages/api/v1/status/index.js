@@ -1,4 +1,4 @@
-import database from "infra/database.js";
+import database from "infra/database";
 
 async function status(request, response) {
   const updatedAt = new Date().toISOString();
@@ -13,21 +13,20 @@ async function status(request, response) {
     databaseMaxConnectionsResult.rows[0].max_connections;
 
   const databaseName = process.env.POSTGRES_DB;
-  const databaseOpenedConnetionsResult = await database.query({
-    text: "SELECT count(*)::int FROM  pg_stat_activity WHERE datname = $1;",
+  const databaseOpenedConnectionsResult = await database.query({
+    text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
     values: [databaseName],
   });
-
-  const databaseOpenedConnetionsValue =
-    databaseOpenedConnetionsResult.rows[0].count;
+  const databaseOpenedConnectionsValue =
+    databaseOpenedConnectionsResult.rows[0].count;
 
   response.status(200).json({
-    updated_At: updatedAt,
+    updated_at: updatedAt,
     dependencies: {
       database: {
         version: databaseVersionValue,
         max_connections: parseInt(databaseMaxConnectionsValue),
-        opened_connections: databaseOpenedConnetionsValue,
+        opened_connections: databaseOpenedConnectionsValue,
       },
     },
   });
